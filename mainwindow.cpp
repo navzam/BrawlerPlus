@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "QMessageBox"
+#include "characters.h"
 #include <time.h>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -36,7 +37,7 @@ void MainWindow::changeEvent(QEvent *e)
 
 void MainWindow::addPlayer()
 {
-    QString name =  ui->playerEdit->text();
+    QString name = ui->playerEdit->text();
 
     if(name == "")
         return;

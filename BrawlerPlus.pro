@@ -6,7 +6,9 @@ TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
     Packet.cpp \
-    Mutex.cpp
+    Mutex.cpp \
+    characters.cpp \
+    character.cpp
 HEADERS += mainwindow.h \
     Serializable.h \
     Savable.h \
@@ -16,5 +18,7 @@ HEADERS += mainwindow.h \
     Platform.h \
     Packet.h \
     Mutex.h \
-    Characters.h
+    Characters.h \
+    characters.h \
+    character.h
 FORMS += mainwindow.ui

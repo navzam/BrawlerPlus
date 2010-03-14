@@ -35,5 +35,27 @@ struct MrGameAndWatch : public Character { MrGameAndWatch() : Character("Mr. Gam
 struct Luigi : public Character { Luigi() : Character("Luigi") {} };
 struct DiddyKong : public Character { DiddyKong() : Character("Diddy Kong") {} };
 struct Zelda : public Character { Zelda() : Character("Zelda") {} };
+struct Pit : public Character { Pit() : Character("Pit") {} };
+struct MetaKnight : public Character { MetaKnight() : Character("MetaKnight") {} };
+struct Falco : public Character { Falco() : Character("Falco") {} };
+struct PokemonTrainer : public Character { PokemonTrainer() : Character("Pokemon Trainer") {} };
+struct Ike : public Character { Ike() : Character("Ike") {} };
+struct Snake : public Character { Snake() : Character("Snake") {} };
+struct Peach : public Character { Peach() : Character("Peach") {} };
+struct Yoshi : public Character { Yoshi() : Character("Yoshi") {} };
+struct Ganondorf : public Character { Ganondorf() : Character("Ganondorf") {} };
+struct IceClimbers : public Character { IceClimbers() : Character("Ice Climbers") {} };
+struct KingDeDeDe : public Character { KingDeDeDe() : Character("King De De De") {} };
+struct Lucario : public Character { Lucario() : Character("Lucario") {} };
+struct Ness : public Character { Ness() : Character("Ness") {} };
+struct Sonic : public Character { Sonic() : Character("Sonic") {} };
+struct Bowser : public Character { Bowser() : Character("Bowser") {} };
+struct Wario : public Character { Wario() : Character("Wario") {} };
+struct ToonLink : public Character { ToonLink() : Character("Toon Link") {} };
+struct ROB : public Character { ROB() : Character("R.O.B.") {} };
+struct Olimar : public Character { Olimar() : Character("Olimar") {} };
+struct CaptainFalcon : public Character { CaptainFalcon() : Character("Captain Falcon") {} };
+struct JigglyPuff : public Character { JigglyPuff() : Character("Jiggly Puff") {} };
+struct Lucas : public Character { Lucas() : Character("Lucas") {} };
 
 #endif // CHARACTERS_H

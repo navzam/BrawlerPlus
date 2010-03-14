@@ -19,6 +19,28 @@ Characters::Characters()
     new Luigi();
     new DiddyKong();
     new Zelda();
+    new Pit();
+    new MetaKnight();
+    new Falco();
+    new PokemonTrainer();
+    new Ike();
+    new Snake();
+    new Peach();
+    new Yoshi();
+    new Ganondorf();
+    new IceClimbers();
+    new KingDeDeDe();
+    new Lucario();
+    new Ness();
+    new Sonic();
+    new Bowser();
+    new Wario();
+    new ToonLink();
+    new ROB();
+    new Olimar();
+    new CaptainFalcon();
+    new JigglyPuff();
+    new Lucas();
 }
 
 Characters::~Characters()

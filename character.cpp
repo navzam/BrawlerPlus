@@ -11,3 +11,13 @@ const String& Character::getName(void) const
 {
     return name;
 }
+
+void Character::serialize(Packet* packet) const
+{
+    packet->addStr(name);
+}
+
+void Character::unserialize(Packet* packet)
+{
+    packet->getStr(name);
+}

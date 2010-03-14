@@ -10,6 +10,15 @@ Characters::Characters()
     new Mario();
     new DonkeyKong();
     new Link();
+    new Samus();
+    new Kirby();
+    new Fox();
+    new Pikachu();
+    new Marth();
+    new MrGameAndWatch();
+    new Luigi();
+    new DiddyKong();
+    new Zelda();
 }
 
 Characters::~Characters()

@@ -26,5 +26,14 @@ public:
 struct Mario : public Character { Mario() : Character("Mario") {} };
 struct DonkeyKong : public Character { DonkeyKong() : Character("Donkey Kong") {} };
 struct Link : public Character { Link() : Character("Link") {} };
+struct Samus : public Character { Samus() : Character("Samus") {} };
+struct Kirby : public Character { Kirby() : Character("Kirby") {} };
+struct Fox : public Character { Fox() : Character("Fox") {} };
+struct Pikachu : public Character { Pikachu() : Character("Pikachu") {} };
+struct Marth : public Character { Marth() : Character("Marth") {} };
+struct MrGameAndWatch : public Character { MrGameAndWatch() : Character("Mr. Game & Watch") {} };
+struct Luigi : public Character { Luigi() : Character("Luigi") {} };
+struct DiddyKong : public Character { DiddyKong() : Character("Diddy Kong") {} };
+struct Zelda : public Character { Zelda() : Character("Zelda") {} };
 
 #endif // CHARACTERS_H

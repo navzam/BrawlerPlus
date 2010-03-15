@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon Mar 15 00:46:00 2010
+** Created: Wed Mar 17 18:03:08 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -82,6 +82,9 @@ public:
         actionAbout->setIcon(icon2);
         actionPreferences = new QAction(MainWindow);
         actionPreferences->setObjectName(QString::fromUtf8("actionPreferences"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8("icons/PreferencesIcon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionPreferences->setIcon(icon3);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         horizontalLayoutWidget = new QWidget(centralWidget);
@@ -143,7 +146,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 285, 27));
+        menuBar->setGeometry(QRect(0, 0, 285, 21));
         menuBrawler_Plus = new QMenu(menuBar);
         menuBrawler_Plus->setObjectName(QString::fromUtf8("menuBrawler_Plus"));
         MainWindow->setMenuBar(menuBar);

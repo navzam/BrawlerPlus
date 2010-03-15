@@ -8,7 +8,10 @@ SOURCES += main.cpp \
     Packet.cpp \
     Mutex.cpp \
     characters.cpp \
-    character.cpp
+    character.cpp \
+    game.cpp \
+    gameresults.cpp \
+    packethandler.cpp
 HEADERS += mainwindow.h \
     Serializable.h \
     Savable.h \
@@ -21,5 +24,8 @@ HEADERS += mainwindow.h \
     characters.h \
     character.h \
     Map.h \
-    Wrappers.h
-FORMS += mainwindow.ui
+    Wrappers.h \
+    game.h \
+    gameresults.h
+FORMS += mainwindow.ui \
+    gameresults.ui

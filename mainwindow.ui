@@ -124,7 +124,7 @@
      <x>0</x>
      <y>0</y>
      <width>285</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuBrawler_Plus">
@@ -165,6 +165,10 @@
    </property>
   </action>
   <action name="actionPreferences">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/PreferencesIcon.png</normaloff>icons/PreferencesIcon.png</iconset>
+   </property>
    <property name="text">
     <string>Preferences</string>
    </property>

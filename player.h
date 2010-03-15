@@ -11,10 +11,16 @@ struct Player : public Savable, public Serializable
     String name;
     SerializableMap<SString, U32, CompareSString> wins;
     SerializableMap<SString, U32, CompareSString> losses;
+    uint16 groupWins;
+    uint16 groupLosses;
+    uint16 KOs;
 
     Player(String playerName) : Savable("account")
     {
         name = playerName;
+        groupWins = 0;
+        groupLosses = 0;
+        KOs = 0;
     }
 
     virtual void serialize(Packet* packet) const
@@ -22,6 +28,9 @@ struct Player : public Savable, public Serializable
 	wins.serialize(packet);
 	losses.serialize(packet);
         packet->addStr(name);
+        packet->addU16(groupWins);
+        packet->addU16(groupLosses);
+        packet->addU16(KOs);
     }
 
     virtual void unserialize(Packet* packet)
@@ -29,6 +38,9 @@ struct Player : public Savable, public Serializable
 	wins.unserialize(packet);
 	losses.unserialize(packet);
         packet->getStr(name);
+        packet->getU16(groupWins);
+        packet->getU16(groupLosses);
+        packet->getU16(KOs);
     }
 
     virtual void save()

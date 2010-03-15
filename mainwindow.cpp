@@ -3,8 +3,9 @@
 #include "QMessageBox"
 #include "characters.h"
 #include <time.h>
-#include <QDebug>
 #include "player.h"
+#include "game.h"
+#include "QDebug"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -50,7 +51,6 @@ void MainWindow::refreshPlayers(void)
     // Loads current players and displays them
 
     QFileInfoList list = playerDir.entryInfoList(QDir::Files);
-    // qWarning() << playerDir.absolutePath();
     for(int i = 0; i < list.size(); ++i)
     {
 	if(list.at(i).completeSuffix().compare("brawler") != 0) continue;
@@ -86,7 +86,6 @@ void MainWindow::addPlayer()
 
     if(ui->playerList->count() >= 15)
         ui->addButton->setEnabled(false);
-
 }
 
 void MainWindow::removePlayer()
@@ -116,4 +115,10 @@ void MainWindow::removePlayer()
 
 void MainWindow::fight()
 {
+    QList<QListWidgetItem*> selection = ui->playerList->selectedItems();
+
+    Game *game = new Game(selection);
+    game->generateRandomCharacters();
+    game->getGameResults();
+    delete game;
 }

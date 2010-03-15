@@ -26,6 +26,7 @@ Packet* loadPacket(String location)
     rewind(file);
     uint8 buffer[size];
     fread(buffer, 1, size, file);
+    fclose(file);
     return new Packet(buffer, size);;
 }
 

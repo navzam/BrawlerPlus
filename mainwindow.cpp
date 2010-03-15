@@ -50,6 +50,7 @@ void MainWindow::refreshPlayers(void)
     // Loads current players and displays them
 
     QFileInfoList list = playerDir.entryInfoList(QDir::Files);
+    // qWarning() << playerDir.absolutePath();
     for(int i = 0; i < list.size(); ++i)
     {
 	if(list.at(i).completeSuffix().compare("brawler") != 0) continue;
@@ -101,8 +102,8 @@ void MainWindow::removePlayer()
     while(!selection.isEmpty())
     {
 	QListWidgetItem* item = selection.takeFirst();
-	QFile file(playerDir.canonicalPath() + "/" + item->text() + ".brawler");
-	qWarning() << "File exists? " << file.exists();
+        QString dir = playerDir.canonicalPath() + "/" + item->text() + ".brawler";
+        QFile file(dir);
 	file.remove();
 	delete item;
     }

@@ -36,7 +36,7 @@
 
 namespace Sentient
 {
-	// Base types
+    // Base types
     typedef unsigned char uint8;
     typedef unsigned short uint16;
     typedef unsigned int uint32;
@@ -50,7 +50,7 @@ namespace Sentient
     typedef float real32;
     typedef double real64;
 
-	// STL
+    // STL
     typedef std::string String;
     typedef std::fstream FileStream;
     typedef std::stringstream StringStream;

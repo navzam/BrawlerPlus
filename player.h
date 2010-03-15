@@ -3,11 +3,15 @@
 
 #include "string"
 #include "Savable.h"
+#include "Map.h"
+#include "Wrappers.h"
 
 struct Player : public Savable, public Serializable
 {
     String name;
     uint16 rank;
+    SerializableMap<SString, U32, CompareSString> wins;
+    SerializableMap<SString, U32, CompareSString> losses;
 
     Player(String playerName) : Savable("account")
     {
@@ -16,12 +20,16 @@ struct Player : public Savable, public Serializable
 
     virtual void serialize(Packet* packet)
     {
+	wins.serialize(packet);
+	losses.serialize(packet);
         packet->addStr(name);
         packet->addU16(rank);
     }
 
     virtual void unserialize(Packet* packet)
     {
+	wins.unserialize(packet);
+	losses.unserialize(packet);
         packet->getStr(name);
         packet->getU16(rank);
     }

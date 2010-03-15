@@ -3,6 +3,7 @@
 #include "QMessageBox"
 #include "characters.h"
 #include <time.h>
+#include "player.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

@@ -86,7 +86,6 @@ void MainWindow::addPlayer()
 
     if(ui->playerList->count() >= 15)
         ui->addButton->setEnabled(false);
-
 }
 
 void MainWindow::removePlayer()
@@ -116,4 +115,19 @@ void MainWindow::removePlayer()
 
 void MainWindow::fight()
 {
+    QList<QListWidgetItem*> selection = ui->playerList->selectedItems();
+    QMessageBox msgBox;
+    QString message = "";
+
+    for(int i = 0; i < selection.count(); ++i)
+    {
+        Character* random = Characters::getInstance().getRandom();
+        message += selection.at(i)->text() + ": " + random->getName().c_str() + "\n";
+    }
+    if(message == "")
+        message = "You need to select some players from the list!";
+
+    msgBox.setText(message);
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.exec();
 }

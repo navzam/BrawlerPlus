@@ -3,3 +3,4 @@ release
 *.o
 *.exe
 BrawlerPlus
+*.pro.user

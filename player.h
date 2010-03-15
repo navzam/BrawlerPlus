@@ -18,7 +18,7 @@ struct Player : public Savable, public Serializable
         name = playerName;
     }
 
-    virtual void serialize(Packet* packet)
+    virtual void serialize(Packet* packet) const
     {
 	wins.serialize(packet);
 	losses.serialize(packet);

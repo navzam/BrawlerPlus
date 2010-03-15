@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDir>
+
+class Player;
 
 namespace Ui {
     class MainWindow;
@@ -16,13 +19,17 @@ public:
 protected:
     void changeEvent(QEvent *e);
 
+
 private:
     Ui::MainWindow *ui;
+    QList<Player> players;
+    QDir playerDir;
 
 private slots:
     void addPlayer();
     void removePlayer();
     void fight();
+    void refreshPlayers(void);
 };
 
 #endif // MAINWINDOW_H

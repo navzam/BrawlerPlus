@@ -3,11 +3,13 @@
 #include "QMessageBox"
 #include "characters.h"
 #include <time.h>
+#include <QDebug>
 #include "player.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    playerDir("./players")
 {
     ui->setupUi(this);
 
@@ -15,6 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->removeButton, SIGNAL(clicked()), this, SLOT(removePlayer()));
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui->fightButton, SIGNAL(clicked()), this, SLOT(fight()));
+    connect(ui->refreshButton, SIGNAL(clicked()), this, SLOT(refreshPlayers()));
+
+
+    refreshPlayers();
 
     srand(time(NULL));
 }
@@ -36,6 +42,28 @@ void MainWindow::changeEvent(QEvent *e)
     }
 }
 
+void MainWindow::refreshPlayers(void)
+{
+    ui->playerList->clear();
+    players.clear();
+
+    // Loads current players and displays them
+
+    QFileInfoList list = playerDir.entryInfoList(QDir::Files);
+    for(int i = 0; i < list.size(); ++i)
+    {
+	if(list.at(i).completeSuffix().compare("brawler") != 0) continue;
+	Player newPlayer("");
+	newPlayer.load(String(String("players/") + list.at(i).baseName().toStdString()).c_str());
+	players.append(newPlayer);
+    }
+
+    for(int i = 0; i < players.size(); ++i)
+    {
+	ui->playerList->addItem(players.at(i).name.c_str());
+    }
+}
+
 void MainWindow::addPlayer()
 {
     QString name = ui->playerEdit->text();
@@ -46,7 +74,13 @@ void MainWindow::addPlayer()
     if(ui->playerList->findItems(name, Qt::MatchExactly).size() > 0)
         return;
 
-    ui->playerList->addItem(name);
+    // Saves player
+    Player newPlayer(name.toStdString());
+    newPlayer.save(playerDir.canonicalPath().toStdString() + "/" + name.toStdString());
+
+
+    refreshPlayers();
+
     ui->playerEdit->clear();
 
     if(ui->playerList->count() >= 15)
@@ -65,7 +99,14 @@ void MainWindow::removePlayer()
 
     QList<QListWidgetItem*> selection = ui->playerList->selectedItems();
     while(!selection.isEmpty())
-        delete selection.takeFirst();
+    {
+	QListWidgetItem* item = selection.takeFirst();
+	QFile file(playerDir.canonicalPath() + "/" + item->text() + ".brawler");
+	file.remove();
+	delete item;
+    }
+
+    refreshPlayers();
 
     if(ui->playerList->count() < 15)
         ui->addButton->setEnabled(true);

@@ -9,7 +9,6 @@
 struct Player : public Savable, public Serializable
 {
     String name;
-    uint16 rank;
     SerializableMap<SString, U32, CompareSString> wins;
     SerializableMap<SString, U32, CompareSString> losses;
 
@@ -23,7 +22,6 @@ struct Player : public Savable, public Serializable
 	wins.serialize(packet);
 	losses.serialize(packet);
         packet->addStr(name);
-        packet->addU16(rank);
     }
 
     virtual void unserialize(Packet* packet)
@@ -31,7 +29,6 @@ struct Player : public Savable, public Serializable
 	wins.unserialize(packet);
 	losses.unserialize(packet);
         packet->getStr(name);
-        packet->getU16(rank);
     }
 
     virtual void save()

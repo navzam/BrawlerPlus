@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun Mar 14 14:28:18 2010
+** Created: Sun Mar 14 19:27:21 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -40,13 +40,13 @@ public:
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
-    QPushButton *addButton;
-    QPushButton *removeButton;
-    QSpacerItem *verticalSpacer;
-    QVBoxLayout *verticalLayout_2;
     QLineEdit *playerEdit;
     QListWidget *playerList;
     QPushButton *fightButton;
+    QVBoxLayout *verticalLayout_3;
+    QPushButton *addButton;
+    QPushButton *removeButton;
+    QSpacerItem *verticalSpacer_2;
     QMenuBar *menuBar;
     QMenu *menuBrawler_Plus;
     QStatusBar *statusBar;
@@ -78,7 +78,7 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(20, 20, 245, 311));
+        horizontalLayoutWidget->setGeometry(QRect(19, 20, 241, 351));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -87,44 +87,46 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        addButton = new QPushButton(horizontalLayoutWidget);
-        addButton->setObjectName(QString::fromUtf8("addButton"));
-
-        verticalLayout->addWidget(addButton);
-
-        removeButton = new QPushButton(horizontalLayoutWidget);
-        removeButton->setObjectName(QString::fromUtf8("removeButton"));
-
-        verticalLayout->addWidget(removeButton);
-
-        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout->addItem(verticalSpacer);
-
-
-        horizontalLayout->addLayout(verticalLayout);
-
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         playerEdit = new QLineEdit(horizontalLayoutWidget);
         playerEdit->setObjectName(QString::fromUtf8("playerEdit"));
         playerEdit->setMaxLength(20);
 
-        verticalLayout_2->addWidget(playerEdit);
+        verticalLayout->addWidget(playerEdit);
 
         playerList = new QListWidget(horizontalLayoutWidget);
         playerList->setObjectName(QString::fromUtf8("playerList"));
         playerList->setSelectionMode(QAbstractItemView::MultiSelection);
 
-        verticalLayout_2->addWidget(playerList);
+        verticalLayout->addWidget(playerList);
 
-
-        horizontalLayout->addLayout(verticalLayout_2);
-
-        fightButton = new QPushButton(centralWidget);
+        fightButton = new QPushButton(horizontalLayoutWidget);
         fightButton->setObjectName(QString::fromUtf8("fightButton"));
-        fightButton->setGeometry(QRect(150, 340, 75, 23));
+
+        verticalLayout->addWidget(fightButton);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        addButton = new QPushButton(horizontalLayoutWidget);
+        addButton->setObjectName(QString::fromUtf8("addButton"));
+
+        verticalLayout_3->addWidget(addButton);
+
+        removeButton = new QPushButton(horizontalLayoutWidget);
+        removeButton->setObjectName(QString::fromUtf8("removeButton"));
+
+        verticalLayout_3->addWidget(removeButton);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_3->addItem(verticalSpacer_2);
+
+
+        horizontalLayout->addLayout(verticalLayout_3);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -153,13 +155,13 @@ public:
         actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0, QApplication::UnicodeUTF8));
         actionAbout->setText(QApplication::translate("MainWindow", "About", 0, QApplication::UnicodeUTF8));
         actionPreferences->setText(QApplication::translate("MainWindow", "Preferences", 0, QApplication::UnicodeUTF8));
+        fightButton->setText(QApplication::translate("MainWindow", "Brawl!", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         addButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         addButton->setText(QApplication::translate("MainWindow", "Add", 0, QApplication::UnicodeUTF8));
         addButton->setShortcut(QApplication::translate("MainWindow", "Return", 0, QApplication::UnicodeUTF8));
         removeButton->setText(QApplication::translate("MainWindow", "Remove", 0, QApplication::UnicodeUTF8));
-        fightButton->setText(QApplication::translate("MainWindow", "Fight!", 0, QApplication::UnicodeUTF8));
         menuBrawler_Plus->setTitle(QApplication::translate("MainWindow", "Brawler Plus", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

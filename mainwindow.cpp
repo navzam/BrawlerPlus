@@ -102,6 +102,7 @@ void MainWindow::removePlayer()
     {
 	QListWidgetItem* item = selection.takeFirst();
 	QFile file(playerDir.canonicalPath() + "/" + item->text() + ".brawler");
+	qWarning() << "File exists? " << file.exists();
 	file.remove();
 	delete item;
     }

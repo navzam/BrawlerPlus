@@ -18,7 +18,6 @@ HEADERS += mainwindow.h \
     Platform.h \
     Packet.h \
     Mutex.h \
-    Characters.h \
     characters.h \
     character.h
 FORMS += mainwindow.ui

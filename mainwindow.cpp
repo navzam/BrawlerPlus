@@ -114,9 +114,27 @@ void MainWindow::removePlayer()
 void MainWindow::fight()
 {
     QList<QListWidgetItem*> selection = ui->playerList->selectedItems();
+    if(selection.count() <= 1)
+    {
+        QMessageBox msgBox;
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.setText("You need to select more players from the list!");
+        msgBox.exec();
+    }
 
-    Game *game = new Game(selection);
-    game->generateRandomCharacters();
-    game->getGameResults();
-    delete game;
+    else if(selection.count() >= 5)
+    {
+        QMessageBox msgBox;
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.setText("A " + QString().setNum(players.count()) + " player game?? LOL!");
+        msgBox.exec();
+    }
+
+    else
+    {
+        Game *game = new Game(selection);
+        game->generateRandomCharacters();
+        game->getGameResults();
+        delete game;
+    }
 }

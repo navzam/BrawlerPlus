@@ -14,27 +14,14 @@ void Game::generateRandomCharacters()
     msgBox.setStandardButtons(QMessageBox::Ok);
     QString message = "";
 
-    if(players.count() <= 1)
-    {
-        msgBox.setText("You need to select more players from the list!");
-        msgBox.exec();
-    }
-    else if(players.count() >= 5)
-    {
-        msgBox.setText("A " + QString().setNum(players.count()) + " player game?? LOL!");
-        msgBox.exec();
-    }
-    else
-    {
-        for(int i = 0; i < players.count(); ++i)
-        {
-            Character* random = Characters::getInstance().getRandom();
-            message += players.at(i)->text() + ": " + random->getName().c_str() + "\n";
-        }
+   for(int i = 0; i < players.count(); ++i)
+   {
+       Character* random = Characters::getInstance().getRandom();
+       message += players.at(i)->text() + ": " + random->getName().c_str() + "\n";
+   }
 
-        msgBox.setText(message);
-        msgBox.exec();
-    }
+   msgBox.setText(message);
+   msgBox.exec();
 }
 
 void Game::getGameResults()

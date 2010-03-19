@@ -202,7 +202,7 @@ public:
 
     void retranslateUi(QDialog *GameResults)
     {
-        GameResults->setWindowTitle(QApplication::translate("GameResults", "Dialog", 0, QApplication::UnicodeUTF8));
+        GameResults->setWindowTitle(QApplication::translate("GameResults", "Game Results", 0, QApplication::UnicodeUTF8));
         winnerLabel->setText(QApplication::translate("GameResults", "Winner:", 0, QApplication::UnicodeUTF8));
         PlayerLabel[0]->setText(QApplication::translate("GameResults", "Player 1:            ", 0, QApplication::UnicodeUTF8));
         PlayerLabel[1]->setText(QApplication::translate("GameResults", "Player 2:            ", 0, QApplication::UnicodeUTF8));

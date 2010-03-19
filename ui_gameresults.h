@@ -161,6 +161,7 @@ public:
 
         KOEdit[3] = new QLineEdit(verticalLayoutWidget);
         KOEdit[3]->setObjectName(QString::fromUtf8("KOEdit4"));
+        KOEdit[3]->setMaxLength(2);
         KOEdit[3]->setEnabled(false);
 
         gridLayout->addWidget(KOEdit[3], 4, 3, 1, 1);

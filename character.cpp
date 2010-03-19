@@ -1,4 +1,3 @@
-#include "character.h"
 #include "characters.h"
 
 Character::Character(String n)

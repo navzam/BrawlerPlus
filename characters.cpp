@@ -1,5 +1,4 @@
 #include "characters.h"
-#include <cstdlib>
 #include <ctime>
 
 Characters Characters::instance;

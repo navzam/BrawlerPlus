@@ -1,9 +1,7 @@
 #include "game.h"
 #include "player.h"
 #include "QMessageBox"
-#include "character.h"
 #include "characters.h"
-#include "QDebug"
 
 Game::Game(QList<QListWidgetItem*> players) : playerDir("./players")
 {

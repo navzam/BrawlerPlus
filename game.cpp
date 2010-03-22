@@ -2,6 +2,7 @@
 #include "player.h"
 #include "QMessageBox"
 #include "characters.h"
+#include "QDebug"
 
 Game::Game(QList<QListWidgetItem*> players) : playerDir("./players")
 {
@@ -32,32 +33,47 @@ void Game::getGameResults()
     resultsWindow.exec();
 
     QString winner = resultsWindow.getWinner();
-    for(int j = 0; j < players.count(); ++j)
+
+    if(players.count() == 2)
     {
-        Player player(players.at(j)->text().toStdString());
-        player.load(String(String("players/") + player.name));
+        Player playerOne(players.at(0)->text().toStdString());
+        playerOne.load(String(String("players/") + playerOne.name));
+        Player playerTwo(players.at(1)->text().toStdString());
+        playerTwo.load(String(String("players/") + playerTwo.name));
 
-        if(players.count() == 2)
+        if(QString(playerOne.name.c_str()) == winner)
         {
-            if(QString(player.name.c_str()) == winner)
-            {
-                // INCREASE WINS AGAINST APPROPRIATE PLAYER
-            }
-            else
-            {
-                // INCREASE LOSSES AGAINST APPROPRIATE PLAYER
-            }
+            playerOne.wins[playerTwo.name].value += 1;
+            playerTwo.losses[playerOne.name].value += 1;
         }
-
         else
         {
+            playerOne.losses[playerTwo.name].value += 1;
+            playerTwo.wins[playerOne.name].value += 1;
+        }
+
+        playerOne.KOs += resultsWindow.getKOs(1);
+        playerTwo.KOs += resultsWindow.getKOs(2);
+
+        playerOne.save(playerDir.canonicalPath().toStdString() + "/" + playerOne.name);
+        playerTwo.save(playerDir.canonicalPath().toStdString() + "/" + playerTwo.name);
+    }
+
+    else
+    {
+        for(int j = 0; j < players.count(); ++j)
+        {
+            Player player(players.at(j)->text().toStdString());
+            player.load(String(String("players/") + player.name));
+
             if(QString(player.name.c_str()) == winner)
                 player.groupWins++;
             else
                 player.groupLosses++;
-        }
-        player.KOs += resultsWindow.getKOs(j + 1);
 
-        player.save(playerDir.canonicalPath().toStdString() + "/" + player.name);
+            player.KOs += resultsWindow.getKOs(j + 1);
+
+            player.save(playerDir.canonicalPath().toStdString() + "/" + player.name);
+        }
     }
 }

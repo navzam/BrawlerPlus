@@ -2,7 +2,6 @@
 #include "player.h"
 #include "QMessageBox"
 #include "characters.h"
-#include "QDebug"
 
 Game::Game(QList<QListWidgetItem*> players) : playerDir("./players")
 {
@@ -30,50 +29,51 @@ void Game::getGameResults()
     for(int i = 0; i < players.count(); ++i)
         resultsWindow.addPlayer(players.at(i)->text());
 
-    resultsWindow.exec();
-
-    QString winner = resultsWindow.getWinner();
-
-    if(players.count() == 2)
+    if(resultsWindow.exec())
     {
-        Player playerOne(players.at(0)->text().toStdString());
-        playerOne.load(String(String("players/") + playerOne.name));
-        Player playerTwo(players.at(1)->text().toStdString());
-        playerTwo.load(String(String("players/") + playerTwo.name));
+        QString winner = resultsWindow.getWinner();
 
-        if(QString(playerOne.name.c_str()) == winner)
+        if(players.count() == 2)
         {
-            playerOne.wins[playerTwo.name].value += 1;
-            playerTwo.losses[playerOne.name].value += 1;
+            Player playerOne(players.at(0)->text().toStdString());
+            playerOne.load(String(String("players/") + playerOne.name));
+            Player playerTwo(players.at(1)->text().toStdString());
+            playerTwo.load(String(String("players/") + playerTwo.name));
+
+            if(QString(playerOne.name.c_str()) == winner)
+            {
+                playerOne.wins[playerTwo.name].value += 1;
+                playerTwo.losses[playerOne.name].value += 1;
+            }
+            else
+            {
+                playerOne.losses[playerTwo.name].value += 1;
+                playerTwo.wins[playerOne.name].value += 1;
+            }
+
+            playerOne.KOs += resultsWindow.getKOs(1);
+            playerTwo.KOs += resultsWindow.getKOs(2);
+
+            playerOne.save(playerDir.canonicalPath().toStdString() + "/" + playerOne.name);
+            playerTwo.save(playerDir.canonicalPath().toStdString() + "/" + playerTwo.name);
         }
+
         else
         {
-            playerOne.losses[playerTwo.name].value += 1;
-            playerTwo.wins[playerOne.name].value += 1;
-        }
+            for(int j = 0; j < players.count(); ++j)
+            {
+                Player player(players.at(j)->text().toStdString());
+                player.load(String(String("players/") + player.name));
 
-        playerOne.KOs += resultsWindow.getKOs(1);
-        playerTwo.KOs += resultsWindow.getKOs(2);
+                if(QString(player.name.c_str()) == winner)
+                    player.groupWins++;
+                else
+                    player.groupLosses++;
 
-        playerOne.save(playerDir.canonicalPath().toStdString() + "/" + playerOne.name);
-        playerTwo.save(playerDir.canonicalPath().toStdString() + "/" + playerTwo.name);
-    }
+                player.KOs += resultsWindow.getKOs(j + 1);
 
-    else
-    {
-        for(int j = 0; j < players.count(); ++j)
-        {
-            Player player(players.at(j)->text().toStdString());
-            player.load(String(String("players/") + player.name));
-
-            if(QString(player.name.c_str()) == winner)
-                player.groupWins++;
-            else
-                player.groupLosses++;
-
-            player.KOs += resultsWindow.getKOs(j + 1);
-
-            player.save(playerDir.canonicalPath().toStdString() + "/" + player.name);
+                player.save(playerDir.canonicalPath().toStdString() + "/" + player.name);
+            }
         }
     }
 }

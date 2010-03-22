@@ -8,7 +8,8 @@ GameResults::GameResults(QWidget *parent) :
     ui->setupUi(this);
     numberOfPlayers = 0;
 
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+    connect(ui->buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
 }
 
 GameResults::~GameResults()
@@ -32,10 +33,10 @@ void GameResults::addPlayer(QString playerName)
 {
     ui->PlayerLabel[numberOfPlayers]->setEnabled(true);
     ui->KOLabel[numberOfPlayers]->setEnabled(true);
-    ui->KOEdit[numberOfPlayers]->setEnabled(true);
+    ui->KOSpinBox[numberOfPlayers]->setEnabled(true);
 
     ui->winnerSelect->addItem(playerName);
-    ui->PlayerLabel[numberOfPlayers]->setText(playerName);
+    ui->PlayerLabel[numberOfPlayers]->setText(playerName + "      ");
     numberOfPlayers++;
 }
 
@@ -46,5 +47,5 @@ QString GameResults::getWinner()
 
 int GameResults::getKOs(int player)
 {
-    return ui->KOEdit[player - 1]->text().toInt();
+    return ui->KOSpinBox[player - 1]->value();
 }

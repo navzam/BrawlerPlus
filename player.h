@@ -14,6 +14,7 @@ struct Player : public Savable, public Serializable
     uint16 groupWins;
     uint16 groupLosses;
     uint16 KOs;
+    uint16 games;
 
     Player(String playerName) : Savable("account")
     {
@@ -21,6 +22,7 @@ struct Player : public Savable, public Serializable
         groupWins = 0;
         groupLosses = 0;
         KOs = 0;
+	games = 0;
     }
 
     virtual void serialize(Packet* packet) const
@@ -30,7 +32,8 @@ struct Player : public Savable, public Serializable
         packet->addStr(name);
         packet->addU16(groupWins);
         packet->addU16(groupLosses);
-        packet->addU16(KOs);
+	packet->addU16(KOs);
+	packet->addU16(games);
     }
 
     virtual void unserialize(Packet* packet)
@@ -41,6 +44,7 @@ struct Player : public Savable, public Serializable
         packet->getU16(groupWins);
         packet->getU16(groupLosses);
         packet->getU16(KOs);
+	packet->getU16(games);
     }
 
     virtual void save()

@@ -54,6 +54,9 @@ void Game::getGameResults()
             playerOne.KOs += resultsWindow.getKOs(1);
             playerTwo.KOs += resultsWindow.getKOs(2);
 
+	    playerOne.games += 1;
+	    playerTwo.games += 1;
+
             playerOne.save(playerDir.canonicalPath().toStdString() + "/" + playerOne.name);
             playerTwo.save(playerDir.canonicalPath().toStdString() + "/" + playerTwo.name);
         }
@@ -72,8 +75,10 @@ void Game::getGameResults()
 
                 player.KOs += resultsWindow.getKOs(j + 1);
 
+		player.games += 1;
+
                 player.save(playerDir.canonicalPath().toStdString() + "/" + player.name);
             }
-        }
+	}
     }
 }

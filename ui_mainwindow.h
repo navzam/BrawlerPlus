@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu Mar 18 21:49:34 2010
+** Created: Thu Mar 25 21:33:13 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -47,6 +47,7 @@ public:
     QPushButton *addButton;
     QPushButton *removeButton;
     QPushButton *refreshButton;
+    QPushButton *statsButton;
     QSpacerItem *verticalSpacer_2;
     QMenuBar *menuBar;
     QMenu *menuBrawler_Plus;
@@ -136,6 +137,11 @@ public:
 
         verticalLayout_3->addWidget(refreshButton);
 
+        statsButton = new QPushButton(horizontalLayoutWidget);
+        statsButton->setObjectName(QString::fromUtf8("statsButton"));
+
+        verticalLayout_3->addWidget(statsButton);
+
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_3->addItem(verticalSpacer_2);
@@ -179,6 +185,7 @@ public:
         addButton->setShortcut(QApplication::translate("MainWindow", "Return", 0, QApplication::UnicodeUTF8));
         removeButton->setText(QApplication::translate("MainWindow", "Remove", 0, QApplication::UnicodeUTF8));
         refreshButton->setText(QApplication::translate("MainWindow", "Refresh", 0, QApplication::UnicodeUTF8));
+        statsButton->setText(QApplication::translate("MainWindow", "Statistics", 0, QApplication::UnicodeUTF8));
         menuBrawler_Plus->setTitle(QApplication::translate("MainWindow", "Brawler Plus", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

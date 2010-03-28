@@ -2,6 +2,8 @@
 #define GAMERESULTS_H
 
 #include <QDialog>
+#include <QSpinBox>
+#include <QLabel>
 
 namespace Ui {
     class GameResults;
@@ -22,6 +24,11 @@ protected:
 
 private:
     Ui::GameResults *ui;
+
+    QSpinBox* KOSpinBox[4];
+    QLabel* PlayerLabel[4];
+    QLabel* KOLabel[4];
+
     int numberOfPlayers;
 };
 

@@ -51,7 +51,7 @@ void PieChart::paintEvent(QPaintEvent *event)
     font.setBold(true);
     font.setPointSize(font.pointSize() + 10);
     painter.setFont(font);
-    painter.drawText(size - 10, size, m_name);
+    painter.drawText(size, size - 20, m_name);
 }
 
 int PieChart::getTotal()

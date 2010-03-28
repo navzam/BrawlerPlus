@@ -66,7 +66,7 @@ struct Player : public Savable, public Serializable
 
     uint32 getGamesPlayed()
     {
-	return getGamesWon() + getGamesLost();
+        return getGamesWon() + getGamesLost() + groupWins + groupLosses;
     }
 
     uint32 getGamesLost()

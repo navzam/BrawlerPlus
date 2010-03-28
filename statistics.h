@@ -20,6 +20,7 @@ protected:
     QWidget* createGroupLosses();
     QWidget* create1vs1Wins();
     QWidget* create1vs1Losses();
+    QWidget* createKOs();
     QWidget* create1vs1Comparison();
 
 private:

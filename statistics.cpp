@@ -25,6 +25,8 @@ Statistics::Statistics(QList<Player> players, QWidget *parent) :
     m_ui->tabs->addTab(create1vs1Wins(), QIcon(), "1 vs 1 Wins");
 
     m_ui->tabs->addTab(create1vs1Losses(), QIcon(), "1 vs 1 Losses");
+
+    m_ui->tabs->addTab(createKOs(), QIcon(), "KOs");
 }
 
 Statistics::~Statistics()
@@ -115,6 +117,28 @@ QWidget* Statistics::create1vs1Losses()
         }
         layout->addWidget(pieChart);
     }
+
+    QWidget* holder = new QWidget(this);
+    holder->setLayout(layout);
+
+    return holder;
+}
+
+QWidget* Statistics::createKOs()
+{
+    QVBoxLayout* layout = new QVBoxLayout();
+    //layout->addWidget();
+    PieChart* KOChart = new PieChart("KOs");
+    PieChart* KOPGChart = new PieChart("KOs Per Game");
+    for(int i = 0; i < m_players.size(); ++i)
+    {
+        Player player = m_players.at(i);
+        KOChart->addItem(QPair<QString, int>(player.name.c_str(), player.KOs));
+        if(player.getGamesPlayed() > 0)
+            KOPGChart->addItem(QPair<QString, int>(player.name.c_str(), ((double)player.KOs / player.getGamesPlayed()) + 0.5));
+    }
+    layout->addWidget(KOChart);
+    layout->addWidget(KOPGChart);
 
     QWidget* holder = new QWidget(this);
     holder->setLayout(layout);

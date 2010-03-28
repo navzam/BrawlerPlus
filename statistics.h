@@ -16,8 +16,10 @@ public:
 
 protected:
     void changeEvent(QEvent *e);
-    QWidget* createGames();
-    QWidget* createGamesLost();
+    QWidget* createGroupWins();
+    QWidget* createGroupLosses();
+    QWidget* create1vs1Wins();
+    QWidget* create1vs1Losses();
 
 private:
     Ui::Statistics *m_ui;

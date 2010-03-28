@@ -11,6 +11,13 @@ Statistics::Statistics(QList<Player> players, QWidget *parent) :
 
     m_ui->tabs->removeTab(0);
 
+    if(players.size() == 2)
+    {
+	Player player1 = m_players.at(0);
+	Player player2 = m_players.at(1);
+	m_ui->tabs->addTab(create1vs1Comparison(), QIcon(), tr(player1.name.c_str()) + tr(" vs ") + tr(player2.name.c_str()));
+    }
+
     m_ui->tabs->addTab(createGroupWins(), QIcon(), "Group Wins");
 
     m_ui->tabs->addTab(createGroupLosses(), QIcon(), "Group Losses");
@@ -113,4 +120,14 @@ QWidget* Statistics::create1vs1Losses()
     holder->setLayout(layout);
 
     return holder;
+}
+
+QWidget* Statistics::create1vs1Comparison()
+{
+    Player player1 = m_players.at(0);
+    Player player2 = m_players.at(1);
+    PieChart* pieChart = new PieChart(player1.name.c_str() + tr(" vs ") + player2.name.c_str());
+    pieChart->addItem(QPair<QString, int>(tr(player1.name.c_str()) + tr(" Wins"), player1.wins[SString(player2.name)].value));
+    pieChart->addItem(QPair<QString, int>(tr(player2.name.c_str()) + tr(" Wins"), player2.wins[SString(player1.name)].value));
+    return pieChart;
 }

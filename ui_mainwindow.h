@@ -1,10 +1,10 @@
 /********************************************************************************
-** Form generated from reading UI file 'mainwindow.ui'
+** Form generated from reading ui file 'mainwindow.ui'
 **
-** Created: Thu Mar 25 21:33:13 2010
-**      by: Qt User Interface Compiler version 4.6.2
+** Created: Sun Mar 28 00:33:29 2010
+**      by: Qt User Interface Compiler version 4.5.2
 **
-** WARNING! All changes made in this file will be lost when recompiling UI file!
+** WARNING! All changes made in this file will be lost when recompiling ui file!
 ********************************************************************************/
 
 #ifndef UI_MAINWINDOW_H
@@ -47,8 +47,8 @@ public:
     QPushButton *addButton;
     QPushButton *removeButton;
     QPushButton *refreshButton;
-    QPushButton *statsButton;
     QSpacerItem *verticalSpacer_2;
+    QPushButton *statistics;
     QMenuBar *menuBar;
     QMenu *menuBrawler_Plus;
     QStatusBar *statusBar;
@@ -93,7 +93,7 @@ public:
         horizontalLayoutWidget->setGeometry(QRect(19, 20, 241, 351));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setMargin(11);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
@@ -137,14 +137,14 @@ public:
 
         verticalLayout_3->addWidget(refreshButton);
 
-        statsButton = new QPushButton(horizontalLayoutWidget);
-        statsButton->setObjectName(QString::fromUtf8("statsButton"));
-
-        verticalLayout_3->addWidget(statsButton);
-
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_3->addItem(verticalSpacer_2);
+
+        statistics = new QPushButton(horizontalLayoutWidget);
+        statistics->setObjectName(QString::fromUtf8("statistics"));
+
+        verticalLayout_3->addWidget(statistics);
 
 
         horizontalLayout->addLayout(verticalLayout_3);
@@ -152,7 +152,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 285, 21));
+        menuBar->setGeometry(QRect(0, 0, 285, 27));
         menuBrawler_Plus = new QMenu(menuBar);
         menuBrawler_Plus->setObjectName(QString::fromUtf8("menuBrawler_Plus"));
         MainWindow->setMenuBar(menuBar);
@@ -185,7 +185,7 @@ public:
         addButton->setShortcut(QApplication::translate("MainWindow", "Return", 0, QApplication::UnicodeUTF8));
         removeButton->setText(QApplication::translate("MainWindow", "Remove", 0, QApplication::UnicodeUTF8));
         refreshButton->setText(QApplication::translate("MainWindow", "Refresh", 0, QApplication::UnicodeUTF8));
-        statsButton->setText(QApplication::translate("MainWindow", "Statistics", 0, QApplication::UnicodeUTF8));
+        statistics->setText(QApplication::translate("MainWindow", "Statistics", 0, QApplication::UnicodeUTF8));
         menuBrawler_Plus->setTitle(QApplication::translate("MainWindow", "Brawler Plus", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

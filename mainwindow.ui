@@ -101,13 +101,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="statsButton">
-         <property name="text">
-          <string>Statistics</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -120,6 +113,13 @@
          </property>
         </spacer>
        </item>
+       <item>
+        <widget class="QPushButton" name="statistics">
+         <property name="text">
+          <string>Statistics</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
     </layout>
@@ -131,7 +131,7 @@
      <x>0</x>
      <y>0</y>
      <width>285</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuBrawler_Plus">

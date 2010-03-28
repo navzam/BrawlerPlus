@@ -6,7 +6,7 @@
 #include "Packet.h"
 #include "packethandler.h"
 
-struct Savable : public Serializable
+struct Savable : public virtual Serializable
 {
 private:
     String eventName;

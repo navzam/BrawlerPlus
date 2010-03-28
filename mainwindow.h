@@ -30,6 +30,7 @@ private slots:
     void removePlayer();
     void fight();
     void refreshPlayers(void);
+    void showStatistics();
 };
 
 #endif // MAINWINDOW_H

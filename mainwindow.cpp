@@ -4,6 +4,7 @@
 #include <time.h>
 #include "player.h"
 #include "game.h"
+#include "statistics.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui->fightButton, SIGNAL(clicked()), this, SLOT(fight()));
     connect(ui->refreshButton, SIGNAL(clicked()), this, SLOT(refreshPlayers()));
+    connect(ui->statistics, SIGNAL(clicked()), this, SLOT(showStatistics()));
 
 
     refreshPlayers();
@@ -137,4 +139,20 @@ void MainWindow::fight()
         game->getGameResults();
         delete game;
     }
+}
+
+void MainWindow::showStatistics()
+{
+    QList<QListWidgetItem*> selection = ui->playerList->selectedItems();
+    QList<Player> players;
+    for(int i = 0; i < selection.size(); ++i)
+    {
+	QString text = selection.at(i)->text();
+	Player player("");
+	player.load(playerDir.canonicalPath().toStdString() + "/" + text.toStdString());
+	players.append(player);
+    }
+
+    Statistics* stats = new Statistics(players, 0);
+    stats->show();
 }

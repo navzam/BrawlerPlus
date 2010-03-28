@@ -8,9 +8,10 @@
 
 struct Player : public Savable, public Serializable
 {
+    typedef SerializableMap<SString, U32, CompareSString> MapType;
     String name;
-    SerializableMap<SString, U32, CompareSString> wins;
-    SerializableMap<SString, U32, CompareSString> losses;
+    MapType wins;
+    MapType losses;
     uint16 groupWins;
     uint16 groupLosses;
     uint16 KOs;
@@ -61,6 +62,31 @@ struct Player : public Savable, public Serializable
     virtual void load(String fileName)
     {
         Savable::load(fileName + ".brawler");
+    }
+
+    uint32 getGamesPlayed()
+    {
+	return getGamesWon() + getGamesLost();
+    }
+
+    uint32 getGamesLost()
+    {
+	uint32 ret = 0;
+	for (MapType::const_iterator it = losses.begin(); it != losses.end(); ++it)
+	{
+	    ret += (*it).second.value;
+	}
+	return ret;
+    }
+
+    uint32 getGamesWon()
+    {
+	uint32 ret = 0;
+	for (MapType::const_iterator it = wins.begin(); it != wins.end(); ++it)
+	{
+	    ret += (*it).second.value;
+	}
+	return ret;
     }
 };
 

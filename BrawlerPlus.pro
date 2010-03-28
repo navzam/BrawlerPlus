@@ -11,7 +11,9 @@ SOURCES += main.cpp \
     character.cpp \
     game.cpp \
     gameresults.cpp \
-    packethandler.cpp
+    packethandler.cpp \
+    statistics.cpp \
+    piechart.cpp
 HEADERS += mainwindow.h \
     Serializable.h \
     Savable.h \
@@ -26,6 +28,9 @@ HEADERS += mainwindow.h \
     Map.h \
     Wrappers.h \
     game.h \
-    gameresults.h
+    gameresults.h \
+    statistics.h \
+    piechart.h
 FORMS += mainwindow.ui \
-    gameresults.ui
+    gameresults.ui \
+    statistics.ui
